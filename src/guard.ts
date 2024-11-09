@@ -18,7 +18,10 @@ async function createGuardHandler(
     }
 
     await client.loginWithRedirect({
-      appState: { target: to.fullPath },
+      appState: {
+        target: to.fullPath,
+        ...redirectLoginOptions?.appState || {},
+      },
       ...redirectLoginOptions
     });
 
